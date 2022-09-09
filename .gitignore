@@ -3,4 +3,5 @@
 **.DS_Store
 **.vercel
 **.git
+**.env
 .vercel
