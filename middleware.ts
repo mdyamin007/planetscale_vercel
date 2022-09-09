@@ -50,7 +50,7 @@ export default function middleware(req: NextRequest) {
     process.env.NODE_ENV === "production" && process.env.VERCEL === "1"
       ? hostname
           .replace(`https://planetscale-vercel.vercel.app/`, "")
-          .replace(`https://planetscale-vercel.vercel.app/`, "")
+          .replace(`.platformize.vercel.app`, "")
       : hostname.replace(`.localhost:3000`, "");
   // rewrites for app pages
   if (currentHost == "app") {
@@ -68,10 +68,7 @@ export default function middleware(req: NextRequest) {
   }
 
   // rewrite root application to `/home` folder
-  if (
-    hostname === "localhost:3000" ||
-    hostname === "https://planetscale-vercel.vercel.app/"
-  ) {
+  if (hostname === "localhost:3000" || hostname === "platformize.vercel.app") {
     url.pathname = `/home${url.pathname}`;
     return NextResponse.rewrite(url);
   }
